@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2027 Timetable &amp; Fees · PTITC</title>
+<meta name="description" content="PTITC 2027 class timetables and monthly fees for Kajang, Serdang, Semenyih, Seremban 2 and Online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Same system as the homepage: navy structure, crest red for the one action, gold for detail. */
+:root{
+  --navy:#0b1a5c;--navy-2:#13257a;--red:#d03024;--gold:#c8b277;
+  --paper:#fff;--mist:#f3f5fa;--ink:#141a33;--muted:#5a6280;--line:#e2e6f0;
+  --s-bm:#D9433B;--s-en:#1E9E6A;--s-ma:#2F62D9;--s-sc:#0E97A8;--s-ta:#8A4FE0;
+  --s-se:#D9800B;--s-ge:#6B8F12;--s-bz:#B0457A;--s-ph:#4155C9;--s-ch:#C2410C;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Lexend",ui-sans-serif,system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.015em;color:var(--navy)}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:6px;font:600 15px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:#b0251b}
+.btn.navy{background:var(--navy);color:#fff}.btn.navy:hover{background:var(--navy-2)}
+.btn.green{background:#1E9E6A;color:#fff}
+.btn.sm{padding:10px 16px;font-size:14px}
+
+header.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:48px;height:auto;border-radius:6px}
+.brand b{display:block;font:800 21px/1 var(--display);color:var(--navy);letter-spacing:.04em}
+.brand small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.menu{display:flex;align-items:center;gap:24px;font-size:14.5px;font-weight:500}
+.menu a{text-decoration:none;color:var(--navy)}
+.menu a:hover{color:var(--red)}
+.menu .home{font-weight:600;padding:9px 14px;border:1px solid var(--line);border-radius:6px}
+@media (max-width:820px){.menu .hide{display:none}}
+@media (max-width:480px){.brand small{display:none}}
+
+.top{background:var(--navy);color:#fff;padding:44px 0 92px}
+.top .eyebrow{color:var(--gold)}
+.top .back{display:inline-block;color:#fff;text-decoration:none;font-size:14px;font-weight:500;margin-bottom:18px;opacity:.85}
+.top .back:hover{opacity:1;color:var(--gold)}
+.top h1{color:#fff;font-size:clamp(32px,5vw,52px);margin-top:12px}
+.top p{color:#c9d0f2;margin:10px 0 0;max-width:56ch}
+
+/* branch selector */
+.branches{margin-top:-62px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.bt{font:inherit;text-align:left;cursor:pointer;background:#fff;border:1px solid var(--line);border-top:4px solid transparent;border-radius:10px;padding:14px 16px;box-shadow:0 10px 26px rgba(11,26,92,.12);display:flex;flex-direction:column;gap:2px}
+.bt small{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bt b{font:700 20px/1.15 var(--display);color:var(--navy)}
+.bt[aria-pressed="true"]{border-top-color:var(--red);background:var(--navy)}
+.bt[aria-pressed="true"] b{color:#fff}
+.bt[aria-pressed="true"] small{color:var(--gold)}
+@media (max-width:820px){.branches{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.branches{grid-template-columns:1fr 1fr}.bt b{font-size:17px}}
+
+main{padding:26px 0 70px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:22px}
+@media (max-width:520px){.panel{padding:16px}}
+.phead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.phead h2{font-size:clamp(26px,4vw,36px)}
+.tabs{display:inline-flex;background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:4px;gap:4px}
+.tabs button{font:600 15px var(--body);padding:10px 18px;border:0;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+
+.label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 15px var(--body);min-width:64px;min-height:48px;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.chip small{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em}
+.chip:hover{border-color:var(--navy)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip[aria-pressed="true"] small{color:var(--gold)}
+.pickrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:760px){.pickrow{grid-template-columns:1fr}}
+
+.sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;border-top:1px solid var(--line);padding-top:22px}
+.sheet-head h3{font-size:clamp(28px,4.5vw,40px)}
+.sheet-head .sub{color:var(--muted);font-size:15px;margin-top:4px}
+.week{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;width:100%;max-width:330px}
+.week span{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.06em;padding:7px 0;border-radius:6px;background:var(--mist);color:#9aa1b8}
+.week span.on{background:var(--red);color:#fff}
+.seg{display:inline-flex;background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:4px;gap:4px;align-self:flex-start}
+.seg button{font:600 14px var(--body);padding:8px 14px;border:0;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.notice{background:#fff6d6;color:#5a4300;border-radius:8px;padding:12px 16px;font-size:15px}
+.note{font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:8px;padding:12px 16px}
+
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:900px){.days{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.days{grid-template-columns:1fr}}
+.day{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.day h4{margin:0;padding:11px 16px;background:var(--mist);font:700 17px var(--display);color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line)}
+.day h4 small{font:500 12.5px var(--body);color:var(--muted)}
+.lesson{display:grid;grid-template-columns:5px 1fr auto;gap:12px;align-items:center;padding:11px 16px}
+.lesson+.lesson{border-top:1px dashed var(--line)}
+.lesson .bar{align-self:stretch;border-radius:3px;background:var(--c)}
+.lesson .subj{font-weight:600}
+.lesson .time{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lesson .room{font-size:12.5px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--mist);color:var(--navy);white-space:nowrap}
+
+/* fees */
+.fee-head h3{font-size:clamp(26px,4vw,36px)}
+.fee-head p{margin:4px 0 0;color:var(--muted)}
+.pkgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pkgs.one{grid-template-columns:minmax(0,520px)}
+@media (max-width:640px){.pkgs{grid-template-columns:1fr}}
+.pkg{border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:10px;display:flex;flex-direction:column}
+.pkg h4{margin:0;padding:14px 16px 0;font:700 19px var(--display);color:var(--navy)}
+.pkg ul{margin:0;padding:10px 16px 4px 34px;display:grid;gap:3px;flex:1;font-size:15px}
+.pkg li::marker{color:var(--gold)}
+.price{padding:10px 16px 16px;display:flex;align-items:baseline;gap:8px}
+.price b{font:800 34px var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
+.price span{font-size:12.5px;font-weight:600;color:var(--muted)}
+.mix{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.mix div{background:var(--mist);border-radius:8px;padding:12px 14px}
+.mix small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mix b{font:800 24px var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
+.mix em{display:block;font-style:normal;font-size:12px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tags span{background:var(--mist);border-radius:999px;padding:6px 12px;font-size:14px}
+.module{background:var(--navy);color:#fff;border-radius:10px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.module small{display:block;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.12em}
+.module b{font:800 32px var(--display)}
+
+.contact{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;background:var(--mist);border-radius:10px;padding:18px 20px}
+.contact h4{margin:0;font:700 19px var(--display);color:var(--navy)}
+.contact .num{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.contact .row{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{background:var(--navy);color:#b9c2ea;font-size:14px;padding:30px 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+footer a{color:#fff;text-decoration:none}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="media/logo.png" alt="PTITC crest"><span><b>PTITC</b><small>Pusat Tuisyen Intelek Transformasi Cakna</small></span></a>
+    <nav class="menu" aria-label="Main">
+      <a class="home hide" href="index.html">← Home</a>
+      <a class="hide" href="index.html#spm">SPM 2026</a>
+      <a class="hide" href="index.html#contact">Contact</a>
+      <a class="btn red sm" href="https://tally.so/r/gbDyjM">Enquire 2027</a>
+    </nav>
+  </div>
+</header>
+
+<div class="top">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to home</a>
+    <div class="eyebrow">Session 2027</div>
+    <h1>Timetable &amp; fees</h1>
+    <p>Choose your branch, then your child's class, to see the weekly timetable and monthly fees.</p>
+  </div>
+</div>
+
+<div class="wrap branches" id="branches" role="group" aria-label="Choose branch"></div>
+
+<main>
+  <div class="wrap">
+    <div class="panel">
+      <div class="phead">
+        <div><div class="eyebrow" id="br-area">Selangor</div><h2 id="br-name">PTITC Kajang</h2></div>
+        <div class="tabs" role="tablist" aria-label="Show">
+          <button type="button" role="tab" id="tab-tt" aria-selected="true">Timetable</button>
+          <button type="button" role="tab" id="tab-fees" aria-selected="false">Fees 2027</button>
+        </div>
+      </div>
+
+      <div id="view-tt" style="display:flex;flex-direction:column;gap:20px">
+        <div class="pickrow" id="classpick">
+          <div id="g-p"><div class="label">Primary</div><div class="chips" id="primary"></div></div>
+          <div id="g-s"><div class="label">Secondary</div><div class="chips" id="secondary"></div></div>
+        </div>
+        <section id="sheet" aria-live="polite" style="display:flex;flex-direction:column;gap:16px">
+          <div class="sheet-head">
+            <div><h3 id="cls">Standard 1</h3><div class="sub" id="summary"></div></div>
+            <div class="week" id="week" aria-label="Days with class"></div>
+          </div>
+          <div class="seg" id="seg" role="group" aria-label="Which month" hidden>
+            <button type="button" data-mode="nov" aria-pressed="true">November</button>
+            <button type="button" data-mode="reg" aria-pressed="false">From December</button>
+          </div>
+          <div class="days" id="days"></div>
+          <div class="note" id="note" hidden></div>
+        </section>
+      </div>
+
+      <div id="view-fees" hidden style="display:flex;flex-direction:column;gap:20px">
+        <div><div class="label">Level</div><div class="chips" id="feechips"></div></div>
+        <div class="fee-head"><h3 id="fee-title"></h3><p id="fee-sub"></p></div>
+        <div class="pkgs" id="pkgs"></div>
+        <div id="mixwrap"><div class="label">Mix &amp; match</div><div class="mix" id="mix"></div></div>
+        <div id="elect"></div>
+        <div class="module" id="module"><div><small>ANNUAL MODULE FEE</small>All levels · payable once a year</div><b>RM50</b></div>
+        <div class="note">All fees are per month unless stated. WhatsApp us to check subjects, class times and enrolment.</div>
+      </div>
+
+      <div class="contact">
+        <div><h4 id="ct-h">PTITC Kajang</h4><div class="num" id="phone">010-272 7324</div></div>
+        <div class="row">
+          <a class="btn red" href="https://tally.so/r/gbDyjM">Enquire now</a>
+          <a class="btn green" id="wa" href="https://wa.me/60102727324">WhatsApp us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><span>© PTITC · Pusat Tuisyen Intelek Transformasi Cakna. Times are for the 2027 session.</span><a href="index.html">← Back to home</a></div>
+</footer>
+
+<script src="timetable-data.js"></script>
+<script>
+let branch = "kjg", T = BR.kjg.T, NOV = BR.kjg.NOV, mode = "nov", current = "std1", tab = "tt";
+function fmt(hm){ let [h,m]=hm.split(":").map(Number); const ap=h>=12?"PM":"AM"; h=h%12||12; return h+":"+String(m).padStart(2,"0")+" "+ap; }
+function range(a,b){ const A=fmt(a), B=fmt(b); return A.slice(-2)===B.slice(-2) ? A.slice(0,-3)+" – "+B : A+" – "+B; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function setHash(){ try { history.replaceState(null, "", "#" + branch + "-" + current); } catch (e) {} }
+
+// Branch buttons
+const brWrap = document.getElementById("branches");
+for (const k of ORDER) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "bt"; b.dataset.k = k;
+  b.innerHTML = "<small>" + esc(k === "onl" ? "Anywhere" : AREA[k]) + "</small><b>" + esc(BR[k].name) + "</b>";
+  b.addEventListener("click", () => openBranch(k, true));
+  brWrap.appendChild(b);
+}
+
+// Class chips (all classes; hidden per branch if not offered)
+const KEYS = ["std1","std2","std3","std4","std5","std6","form1","form2","form3","form4","form5"];
+for (const key of KEYS) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.dataset.key = key;
+  const isStd = key.startsWith("std");
+  b.innerHTML = "<small>" + (isStd ? "STD" : "FORM") + "</small>" + key.replace(/\D/g, "");
+  b.setAttribute("aria-label", (isStd ? "Standard " : "Form ") + key.replace(/\D/g, ""));
+  b.addEventListener("click", () => { mode = "nov"; show(key, true); });
+  document.getElementById(isStd ? "primary" : "secondary").appendChild(b);
+}
+
+function show(key, user){
+  document.querySelectorAll("#classpick .chip").forEach(b => { b.hidden = !T[b.dataset.key]; });
+  document.getElementById("g-p").hidden = !document.querySelector("#primary .chip:not([hidden])");
+  document.getElementById("g-s").hidden = !document.querySelector("#secondary .chip:not([hidden])");
+  if (!T[key]) key = Object.keys(T)[0];
+  current = key;
+  const base = T[key], nov = NOV[key], useNov = !!nov && mode === "nov";
+  const lessons = (useNov ? nov.lessons : base.lessons).slice().sort((a, b) => DAYS.indexOf(a[0]) - DAYS.indexOf(b[0]) || a[1].localeCompare(b[1]));
+  document.querySelectorAll("#classpick .chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.key === key)));
+  const seg = document.getElementById("seg"); seg.hidden = !nov;
+  seg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === (useNov ? "nov" : "reg"))));
+  document.getElementById("cls").textContent = base.name;
+  const used = DAYS.filter(d => lessons.some(l => l[0] === d));
+  document.getElementById("summary").textContent = lessons.length + " classes a week · " + used.length + " days";
+  document.getElementById("week").innerHTML = DAYS.map(d => '<span class="' + (used.includes(d) ? "on" : "") + '">' + d.toUpperCase() + "</span>").join("");
+  document.getElementById("days").innerHTML = used.map(d => {
+    const ls = lessons.filter(l => l[0] === d);
+    return '<article class="day"><h4>' + DAYNAME[d] + "<small>" + ls.length + (ls.length > 1 ? " classes" : " class") + "</small></h4>" +
+      ls.map(l => '<div class="lesson" style="--c: var(' + (COLORS[l[3]] || "--muted") + ')"><span class="bar"></span><div><div class="subj">' + esc(l[3]) +
+        '</div><div class="time">' + range(l[1], l[2]) + (ls.filter(x => x[1] === l[1]).length > 1 ? " · choose one" : "") + '</div></div><span class="room">' + (l[4] === "Online" ? "Online" : "Room " + l[4]) + "</span></div>").join("") + "</article>";
+  }).join("");
+  const noteText = [useNov ? nov.note : "", base.note].filter(Boolean).join(" ");
+  const note = document.getElementById("note"); note.hidden = !noteText; note.textContent = noteText;
+  if (user) setHash();
+}
+
+const feechips = document.getElementById("feechips");
+for (const [k, f] of Object.entries(FEES)) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.dataset.level = k;
+  const [w, n] = f.label.split(" ");
+  b.innerHTML = "<small>" + w + "</small>" + n;
+  b.addEventListener("click", () => renderFees(k));
+  feechips.appendChild(b);
+}
+function tile(t){ return "<div><small>" + esc(t[0]) + "</small><b>" + esc(t[1]) + "</b><em>" + esc(t[2] || "per month") + "</em></div>"; }
+function renderFees(k){
+  const F = branch === "onl" ? FEES_ONL : FEES;
+  if (!F[k]) k = Object.keys(F)[0];
+  const f = F[k];
+  feechips.querySelectorAll(".chip").forEach(b => { b.hidden = !F[b.dataset.level]; b.setAttribute("aria-pressed", String(b.dataset.level === k)); });
+  document.getElementById("fee-title").textContent = f.title;
+  document.getElementById("fee-sub").textContent = f.sub;
+  const pk = document.getElementById("pkgs");
+  pk.className = "pkgs" + (f.pkgs.length === 1 ? " one" : "");
+  pk.innerHTML = f.pkgs.map(p => '<article class="pkg"><h4>' + esc(p[0]) + "</h4><ul>" + p[1].map(s => "<li>" + esc(s) + "</li>").join("") +
+    '</ul><div class="price"><b>' + esc(p[2]) + "</b><span>/ MONTH</span></div></article>").join("");
+  document.getElementById("mixwrap").hidden = !f.mix.length;
+  document.getElementById("mix").innerHTML = f.mix.map(tile).join("");
+  document.getElementById("elect").innerHTML = !f.electives ? "" :
+    '<div class="label">Elective add-ons</div><div class="tags">' + f.electives.map(e => "<span>" + esc(e) + "</span>").join("") +
+    '</div><div class="label">Monthly rate when added to a core package</div><div class="mix">' + f.addon.map(tile).join("") + "</div>";
+  document.getElementById("module").hidden = branch === "onl";
+}
+function setTab(t){
+  tab = t; const fees = t === "fees";
+  document.getElementById("tab-tt").setAttribute("aria-selected", String(!fees));
+  document.getElementById("tab-fees").setAttribute("aria-selected", String(fees));
+  document.getElementById("view-tt").hidden = fees;
+  document.getElementById("view-fees").hidden = !fees;
+  if (fees) renderFees(LEVEL_OF[current] || "p13");
+}
+document.getElementById("tab-tt").addEventListener("click", () => setTab("tt"));
+document.getElementById("tab-fees").addEventListener("click", () => setTab("fees"));
+document.querySelectorAll("#seg button").forEach(b => b.addEventListener("click", () => { mode = b.dataset.mode; show(current, false); }));
+
+function openBranch(k, user){
+  branch = k; T = BR[k].T; NOV = BR[k].NOV; mode = "nov";
+  document.querySelectorAll(".bt").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
+  document.getElementById("br-name").textContent = "PTITC " + BR[k].name;
+  document.getElementById("br-area").textContent = AREA[k];
+  document.getElementById("ct-h").textContent = "PTITC " + BR[k].name;
+  document.getElementById("phone").textContent = BR[k].phone;
+  document.getElementById("wa").href = "https://wa.me/" + BR[k].wa;
+  show(current, false);
+  setTab(tab);
+  if (user) setHash();
+}
+
+// Links like timetable.html#kjg or #kjg-form4 open that branch and class
+const h = (location.hash || "").slice(1), hb = h.split("-")[0], hc = h.split("-")[1];
+if (BR[hb]) { if (hc) current = hc; openBranch(hb, false); } else openBranch("kjg", false);
+</script>
+</body>
+</html>
