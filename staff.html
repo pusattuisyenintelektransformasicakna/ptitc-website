@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Login · PTITC</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1a5c">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1a5c;--red:#d03024;--mist:#f3f5fa;--ink:#141a33;--muted:#5a6280;--line:#e2e6f0;--green:#1E9E6A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.55 "Lexend",system-ui,sans-serif}
+header{background:var(--navy);color:#fff}
+header .w{max-width:560px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+header a{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.04em}
+.brand img{width:38px;border-radius:6px;background:#fff}
+main{max-width:560px;margin:auto;padding:24px 18px 40px}
+h1{font:800 28px/1.15 "Bricolage Grotesque",sans-serif;color:var(--navy);margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 22px}
+.opt{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:14px;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(11,26,92,.05);transition:transform .15s,box-shadow .15s}
+.opt:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(11,26,92,.1)}
+.ic{width:60px;height:60px;border-radius:14px;display:grid;place-items:center;font-size:30px;flex:none}
+.opt b{display:block;font:700 20px/1.2 "Bricolage Grotesque",sans-serif;color:var(--navy)}
+.opt span{font-size:14px;color:var(--muted)}
+.arr{margin-left:auto;font-size:22px;color:var(--navy)}
+.note{font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:22px}
+.note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header><div class="w"><span class="brand"><img src="media/logo.png" alt="">PTITC</span><a href="index.html">← Home</a></div></header>
+<main>
+  <h1>Staff Login</h1>
+  <p class="lead">Choose what you want to do.</p>
+  <a class="opt" href="attendance.html">
+    <span class="ic" style="background:#e7f6ef">🕐</span>
+    <span><b>Attendance</b><span>Check in when you arrive, check out when you leave. Any branch.</span></span>
+    <span class="arr">›</span>
+  </a>
+  <a class="opt" href="https://script.google.com/a/macros/ptitchq.com/s/AKfycbwAxQ8MSijpxtx-EhHm8qe6oJQ7Msbntx-e5JVtufOqs8kzp1CSWJIV6wdhrUorFp8_/exec">
+    <span class="ic" style="background:#e9edfb">📋</span>
+    <span><b>Enquiries</b><span>2027 parent enquiries from all branches. Update follow-up status.</span></span>
+    <span class="arr">›</span>
+  </a>
+  <p class="note">Sign in with your <b>@ptitchq.com</b> staff email only. Personal Gmail accounts can't open these pages. If you see an error, open this page in a private/incognito tab and sign in with your work email.</p>
+</main>
+</body>
+</html>
