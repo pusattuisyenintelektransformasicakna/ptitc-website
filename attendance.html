@@ -50,7 +50,10 @@ button:disabled{opacity:.55;cursor:wait}
   </div>
 </main>
 <script>
-var EXEC = "https://script.google.com/a/macros/ptitchq.com/s/AKfycbxUoKlBtoga8V2LXBeovYNEk-FCqgmYHGEbHYQiHbvSLZZxGtWJitJDzS-MUODWVE-7oA/exec";
+var OWNER = /[?&]o=1/.test(location.search);
+var EXEC = OWNER ? "https://script.google.com/macros/s/AKfycbxd-NlIcOqyT_RwEvumACc629o6RdEZYkhVf5DMGV7IIsWAzt5Il4LDwhMyyrKIPbSiQw/exec"
+  : "https://script.google.com/a/macros/ptitchq.com/s/AKfycbxUoKlBtoga8V2LXBeovYNEk-FCqgmYHGEbHYQiHbvSLZZxGtWJitJDzS-MUODWVE-7oA/exec";
+if (OWNER) document.querySelector("h1").textContent = "Owner check-in (Gmail)";
 var pos = null;
 function tick(){var d=new Date();document.getElementById("clock").textContent=d.toLocaleTimeString("en-MY",{hour:"numeric",minute:"2-digit",timeZone:"Asia/Kuala_Lumpur"});
   document.getElementById("date").textContent=d.toLocaleDateString("en-MY",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Kuala_Lumpur"});}
