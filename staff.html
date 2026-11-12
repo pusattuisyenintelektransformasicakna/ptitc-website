@@ -7,27 +7,59 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta name="theme-color" content="#0b1a5c">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#f3f5fa;color:#141a33;font:400 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{background:#0b1a5c;color:#fff;padding:16px 18px;font-weight:800;letter-spacing:.04em}
-main{max-width:520px;margin:auto;padding:28px 18px}
-h1{color:#0b1a5c;font-size:26px;margin:0 0 8px}
-a.btn{display:block;text-align:center;background:#0b1a5c;color:#fff;text-decoration:none;font-weight:600;padding:15px;border-radius:10px;margin:20px 0}
-small{color:#5a6280}
+:root{--navy:#0b1a5c;--red:#d03024;--mist:#f3f5fa;--ink:#141a33;--muted:#5a6280;--line:#e2e6f0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.55 "Lexend",system-ui,sans-serif}
+header{background:var(--navy);color:#fff}
+header .w{max-width:520px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+header a{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.04em}
+.brand img{width:38px;border-radius:6px;background:#fff}
+main{max-width:520px;margin:auto;padding:26px 18px 40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+h1{font:800 28px/1.15 "Bricolage Grotesque",sans-serif;color:var(--navy);margin:0 0 6px}
+p.lead{color:var(--muted);margin:0 0 18px}
+label{font-weight:600;font-size:14px}
+input{width:100%;font:400 17px "Lexend",sans-serif;padding:14px;border:1.5px solid var(--line);border-radius:10px;margin:6px 0 14px}
+input:focus{outline:none;border-color:var(--navy)}
+button{width:100%;font:600 17px "Lexend",sans-serif;padding:15px;border:0;border-radius:10px;background:var(--navy);color:#fff;cursor:pointer}
+.msg{display:none;margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px}
+.msg.no{display:block;background:#fdecea;color:#8a1c14;border:1px solid #f5c2bd}
+.msg.ok{display:block;background:#e8f6ef;color:#145c3e;border:1px solid #bfe6d2}
+.msg a{color:inherit;font-weight:600}
+small{display:block;color:var(--muted);margin-top:18px;font-size:13px}
 </style>
 </head>
 <body>
-<header>PTITC · Staff Login</header>
+<header><div class="w"><span class="brand"><img src="media/logo.png" alt="">PTITC</span><a href="index.html">← Home</a></div></header>
 <main>
+ <div class="card">
   <h1>🔒 Staff Login</h1>
-  <p>Sign in with your <b>@ptitchq.com</b> staff email. Only approved PTITC staff can enter.</p>
-  <a class="btn" href="https://script.google.com/a/macros/ptitchq.com/s/AKfycbxUoKlBtoga8V2LXBeovYNEk-FCqgmYHGEbHYQiHbvSLZZxGtWJitJDzS-MUODWVE-7oA/exec">Sign in with staff email</a>
-  <div style="background:#fff;border:1px solid #e2e6f0;border-radius:12px;padding:14px 16px;font-size:14px">
-  <b>See "Sorry, unable to open the file"?</b> Your browser is signed in to another Google account (like a personal Gmail). Do one of these:<br>
-  • Open this page in a <b>Private / Incognito</b> tab and sign in with your staff email, or<br>
-  • Use a browser where only your <b>@ptitchq.com</b> account is signed in.</div>
-  <p><small>Parents: for timetables, fees and enquiries, please go back to the <a href="index.html">home page</a>.<br><br>
-  Owner using personal Gmail: <a href="https://script.google.com/macros/s/AKfycbxd-NlIcOqyT_RwEvumACc629o6RdEZYkhVf5DMGV7IIsWAzt5Il4LDwhMyyrKIPbSiQw/exec">sign in here</a>.</small></p>
+  <p class="lead">For PTITC staff only. Enter your staff email to continue.</p>
+  <form id="f" autocomplete="on">
+   <label for="e">Staff email</label>
+   <input id="e" type="email" inputmode="email" autocomplete="username" placeholder="name@ptitchq.com" required>
+   <button type="submit">Continue</button>
+  </form>
+  <div class="msg" id="m"></div>
+ </div>
+ <small>Parents: for timetables, fees and enquiries, please visit the <a href="index.html">home page</a> or WhatsApp your branch.</small>
 </main>
+<script>
+var OK=["b71b4286fc43805db18badae5e51e8741552e7b22dea41edb059a011956760c7", "a1f22c6bc71267cddb912cc852d396bad7b226d8d9079f9f87785aabd6a2ec70", "e0fd6157cd16c3424c1bb6107f9f9ac775ff64e1a6995c6166faaa76aa706db0", "0c56c5acb04f1637163319b897d9cfa79c0eec49d384d373b32461f57116fff3", "fdaff31f96d22f77ae4f0fc67aac88a3e6985c1ea1f79d75d2f6672e9e958c50", "2701be7bf589b60a27a8789b334a6f34cbfede3795d3219ce5c9ba7fe8e87cd5", "9187837db99ba01fefc282306ae79c192bf713b6e3541b9d45de1867c53d9cd3", "ce582cae9cd6858b42d77244ca849686018fa275ecd5cd2946094a952f0673d9", "c0804a81a621735b084f705dd80ea5a39ef2c77da4bfccbf031822fe73ab60f3"], OWNER_G="ac306ca047cef5dbc6df3fd98a8ba9f6b213b4cb6bb7c109aaaeae6e534a4576";
+var PORTAL="https://script.google.com/a/macros/ptitchq.com/s/AKfycbxUoKlBtoga8V2LXBeovYNEk-FCqgmYHGEbHYQiHbvSLZZxGtWJitJDzS-MUODWVE-7oA/exec";
+var OWN="https://script.google.com/macros/s/AKfycbxd-NlIcOqyT_RwEvumACc629o6RdEZYkhVf5DMGV7IIsWAzt5Il4LDwhMyyrKIPbSiQw/exec";
+async function h(s){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+document.getElementById("f").addEventListener("submit",async function(ev){ev.preventDefault();
+ var e=document.getElementById("e").value.trim().toLowerCase(),m=document.getElementById("m"),d=await h(e);
+ if(d===OWNER_G){m.className="msg ok";m.textContent="Owner access. Opening Google sign-in…";location.href=OWN;return}
+ if(OK.indexOf(d)<0){m.className="msg no";
+  m.innerHTML="<b>Sorry, this area is for PTITC staff only.</b><br>"+(e.indexOf("@ptitchq.com")<0?"Please use your official <b>@ptitchq.com</b> staff email.":"This email is not on the approved staff list.")+"<br><br>Parents: please go back to the <a href='index.html'>home page</a>.";return}
+ m.className="msg ok";m.innerHTML="Approved. Opening Google sign-in…<br><br>If Google shows <b>“unable to open the file”</b>, open this page in a Private / Incognito tab and try again.";
+ location.href="https://accounts.google.com/AccountChooser?Email="+encodeURIComponent(e)+"&continue="+encodeURIComponent(PORTAL);
+});
+</script>
 </body>
 </html>
