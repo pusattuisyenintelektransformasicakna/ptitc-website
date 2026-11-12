@@ -3,9 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Attendance · PTITC</title>
 <meta name="robots" content="noindex">
-<title>Staff Login · PTITC</title>
-<meta http-equiv="refresh" content="0; url=staff.html">
+<script>
+/* Only reachable from the Google sign-in Staff portal (staff.html). Check-ins themselves are also checked by Google sign-in. */
+(function(){var q=location.search.match(/[?&]k=([0-9a-z]+)/),k=q?q[1]:null;
+ try{if(k)sessionStorage.setItem("ptk",k);else k=sessionStorage.getItem("ptk");}catch(e){}
+ var t=k?parseInt(k,36):0; if(!t||Date.now()-t>12*3600e3||t-Date.now()>600e3){location.replace("staff.html");}})();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1a5c">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1a5c;--navy-2:#13257a;--red:#d03024;--gold:#c8b277;--mist:#f3f5fa;--ink:#141a33;--muted:#5a6280;--line:#e2e6f0;--green:#1E9E6A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.55 "Lexend",system-ui,sans-serif}
+header{background:var(--navy);color:#fff}
+header .w{max-width:520px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+header a{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.04em}
+.brand img{width:38px;border-radius:6px;background:#fff}
+main{max-width:520px;margin:auto;padding:20px 18px 40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+h1{font:800 26px/1.15 "Bricolage Grotesque",sans-serif;color:var(--navy);margin:0 0 4px}
+.date{color:var(--muted);margin:0}
+.clock{font:800 52px/1 "Bricolage Grotesque",sans-serif;color:var(--navy);margin:18px 0 6px;font-variant-numeric:tabular-nums}
+.loc{display:flex;gap:10px;align-items:flex-start;background:var(--mist);border-radius:10px;padding:12px 14px;font-size:14px;margin:14px 0 6px}
+.dot{width:10px;height:10px;border-radius:50%;background:#aab;margin-top:6px;flex:none}
+.dot.ok{background:var(--green)}.dot.bad{background:var(--red)}
+.btns{display:grid;gap:12px;margin-top:18px}
+button{font:600 18px/1 "Lexend",sans-serif;padding:18px;border-radius:12px;border:0;cursor:pointer;color:#fff}
+#in{background:var(--green)}#out{background:var(--navy)}
+button:disabled{opacity:.55;cursor:wait}
+.note{font-size:13px;color:var(--muted);margin-top:18px}
+.note b{color:var(--ink)}
+</style>
 </head>
-<body><p><a href="staff.html">Staff login is temporarily closed.</a></p></body>
+<body>
+<header><div class="w"><span class="brand"><img src="media/logo.png" alt="">PTITC</span><a href="staff.html">← Staff Login</a></div></header>
+<main>
+  <div class="card">
+    <h1>Staff attendance</h1>
+    <p class="date" id="date"></p>
+    <div class="clock" id="clock">--:--</div>
+    <div class="loc"><span class="dot" id="dot"></span><span id="locmsg">Checking your location…</span></div>
+    <div class="btns">
+      <button id="in" type="button">Check in</button>
+      <button id="out" type="button">Check out</button>
+    </div>
+    <p class="note">Sign in with your <b>@ptitchq.com</b> staff email when Google asks. Your location is recorded <b>only when you tap a button</b>, to confirm you are at your branch. Working hours: Mon–Fri, 1:00–10:00 pm.</p>
+  </div>
+</main>
+<script>
+var OWNER = /[?&]o=1/.test(location.search);
+var EXEC = OWNER ? "https://script.google.com/macros/s/AKfycbxd-NlIcOqyT_RwEvumACc629o6RdEZYkhVf5DMGV7IIsWAzt5Il4LDwhMyyrKIPbSiQw/exec"
+  : "https://script.google.com/a/macros/ptitchq.com/s/AKfycbxUoKlBtoga8V2LXBeovYNEk-FCqgmYHGEbHYQiHbvSLZZxGtWJitJDzS-MUODWVE-7oA/exec";
+if (OWNER) document.querySelector("h1").textContent = "Owner check-in (Gmail)";
+var pos = null;
+function tick(){var d=new Date();document.getElementById("clock").textContent=d.toLocaleTimeString("en-MY",{hour:"numeric",minute:"2-digit",timeZone:"Asia/Kuala_Lumpur"});
+  document.getElementById("date").textContent=d.toLocaleDateString("en-MY",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Kuala_Lumpur"});}
+tick();setInterval(tick,1000);
+function setLoc(ok,msg){var d=document.getElementById("dot");d.className="dot "+(ok===true?"ok":ok===false?"bad":"");document.getElementById("locmsg").textContent=msg;}
+function locate(cb){
+  if(!navigator.geolocation){setLoc(false,"This phone cannot share location.");cb&&cb();return;}
+  navigator.geolocation.getCurrentPosition(function(p){pos=p.coords;setLoc(true,"Location found (accurate to about "+Math.round(pos.accuracy)+" m).");cb&&cb();},
+    function(err){pos=null;setLoc(false,err.code===1?"Location is blocked. Please allow location for this site in your browser settings, then reload.":"Could not get your location. Move near a window and try again.");cb&&cb();},
+    {enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+locate();
+function go(a){
+  var bi=document.getElementById("in"),bo=document.getElementById("out");bi.disabled=bo.disabled=true;
+  setLoc(null,"Getting your location…");
+  locate(function(){
+    if(!pos && !confirm("Your location could not be found. Check "+a+" without location? It will be marked 'No location'.")){bi.disabled=bo.disabled=false;return;}
+    var q="?a="+a+"&n="+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+    if(pos) q+="&lat="+pos.latitude.toFixed(6)+"&lng="+pos.longitude.toFixed(6)+"&acc="+Math.round(pos.accuracy);
+    location.href=EXEC+q;
+  });
+}
+document.getElementById("in").onclick=function(){go("in")};
+document.getElementById("out").onclick=function(){go("out")};
+</script>
+</body>
 </html>
