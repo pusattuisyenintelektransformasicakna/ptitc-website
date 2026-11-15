@@ -288,9 +288,9 @@ body.menu-open{overflow:hidden}
     </div>
     <div class="spmgrid">
       <div class="days">
-        <div class="day"><div class="d">Day 1</div><h3>Saturday, 21 Nov</h3><div class="venue">Universiti Putra Malaysia</div>
-          <ul><li><span>8.30 – 10.30am</span>Pendidikan Moral</li><li><span>10.30am – 12.30pm</span>English</li><li><span>1.00 – 3.30pm</span>Mathematics</li><li><span>4.00 – 6.30pm</span>Bahasa Melayu</li></ul>
-          <div class="note">Students from all branches attend this session at UPM.</div></div>
+        <div class="day"><div class="d">Day 1</div><h3>Saturday, 21 Nov</h3><div class="venue">PTITC Kajang</div>
+          <ul><li><span>8.00 – 10.30am</span>Mathematics</li><li><span>10.30am – 1.00pm</span>Bahasa Melayu</li><li><span>1.00 – 1.30pm</span>Lunch break</li><li><span>1.30 – 3.30pm</span>Pendidikan Moral</li><li><span>3.30 – 5.30pm</span>English</li></ul>
+          <div class="note">Students from all branches attend this session at PTITC Kajang.</div></div>
         <div class="day"><div class="d">Day 2</div><h3>Saturday, 28 Nov</h3><div class="venue">PTITC Kajang / Seremban 2</div>
           <ul><li><span>8.30 – 10.30am</span>Sejarah</li><li><span>10.30am – 12.30pm</span>Science / Physics</li><li><span>1.00 – 3.00pm</span>Biology / Perniagaan</li></ul></div>
         <div class="day"><div class="d">Day 3</div><h3>Saturday, 5 Dec</h3><div class="venue">PTITC Kajang / Seremban 2</div>
@@ -424,9 +424,9 @@ body.menu-open{overflow:hidden}
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();b.textContent="▶ Play video";}
   b.addEventListener("click",function(){if(v.paused){v.play().catch(function(){});b.textContent="❚❚ Pause video";}else{v.pause();b.textContent="▶ Play video";}});
 })();
-// Countdown to SPM Ramalan Day 1: Sat 21 Nov 2026, 8.30am Malaysia time.
+// Countdown to SPM Ramalan Day 1: Sat 21 Nov 2026, 8.00am Malaysia time.
 (function(){
-  var t=new Date("2026-11-21T08:30:00+08:00").getTime();
+  var t=new Date("2026-11-21T08:00:00+08:00").getTime();
   function p(n){return String(n).padStart(2,"0")}
   function tick(){var s=Math.max(0,Math.floor((t-Date.now())/1000));
     document.getElementById("cd-d").textContent=Math.floor(s/86400);
