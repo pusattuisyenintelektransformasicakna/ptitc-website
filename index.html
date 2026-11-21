@@ -134,8 +134,12 @@ section{padding:72px 0}
 .card p{margin:0;color:var(--muted);font-size:14px}
 @media (max-width:980px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.cards{grid-template-columns:1fr}}
-.story{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center;margin-top:64px}
-.story .vid{border-radius:12px;overflow:hidden;background:#000;max-width:340px;justify-self:center;width:100%;aspect-ratio:9/16;box-shadow:0 20px 40px rgba(11,26,92,.18)}
+.story{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;margin-top:64px}
+.story .vids{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:600px;justify-self:center;width:100%}
+.story figure{margin:0}
+.story .vid{border-radius:12px;overflow:hidden;background:#000;width:100%;aspect-ratio:9/16;box-shadow:0 20px 40px rgba(11,26,92,.18)}
+.story figcaption{margin-top:12px;font-size:14.5px;line-height:1.4;color:var(--muted)}
+.story figcaption b{display:block;font:600 16px/1.3 var(--display);color:var(--navy);margin-bottom:4px}
 .story video{width:100%;height:100%;object-fit:cover}
 .story h3{font-size:clamp(28px,3.6vw,40px);margin-top:10px}
 .story blockquote{margin:18px 0 0;font:600 clamp(20px,2.4vw,28px)/1.3 var(--display);color:var(--navy)}
@@ -336,12 +340,20 @@ body.menu-open{overflow:hidden}
         <div class="tx"><span class="lvl">Anywhere in Malaysia</span><h3>Online classes</h3><p>Live lessons with a teacher, from home.</p></div></div>
     </div>
     <div class="story">
-      <div class="vid"><video controls playsinline preload="none" poster="media/student-story.jpg"><source src="media/student-story.mp4" type="video/mp4"></video></div>
+      <div class="vids">
+        <figure>
+          <div class="vid"><video controls playsinline preload="none" poster="media/student-story.jpg"><source src="media/student-story.mp4" type="video/mp4"></video></div>
+          <figcaption><b>&ldquo;A year at PTITC has been really helpful.&rdquo;</b>Dhanesh, SPM student</figcaption>
+        </figure>
+        <figure>
+          <div class="vid"><video controls playsinline preload="none" poster="media/student-story-kirtan.jpg"><source src="media/student-story-kirtan.mp4" type="video/mp4"></video></div>
+          <figcaption><b>&ldquo;Since I joined in Form 1, my marks have improved a lot.&rdquo;</b>Kirtan, Form 3, SMK Jalan Bukit Kajang</figcaption>
+        </figure>
+      </div>
       <div>
         <div class="eyebrow">Student stories</div>
         <h3>Hear it from our students</h3>
-        <blockquote>A year at PTITC has been really helpful.</blockquote>
-        <div class="who">SPM student, PTITC. Press play to hear his story.</div>
+        <div class="who">Press play to hear their stories in their own words.</div>
         <ul>
           <li>Experienced teachers who know the KSSR and KSSM syllabus</li>
           <li>Modules in Bahasa Melayu and English for DLP students</li>
