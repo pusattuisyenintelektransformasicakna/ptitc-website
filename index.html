@@ -214,6 +214,11 @@ body.menu-open{overflow:hidden}
 .drawer .foot{margin-top:auto;padding:16px;border-top:1px solid var(--line)}
 .drawer .staff{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600}
 .drawer .staff:hover{background:var(--navy-2)}
+.menu .studb{border:2px solid var(--navy);color:var(--navy);background:#fff}
+.menu .studb:hover{background:var(--navy);color:#fff}
+.drawer .staff.stud{background:var(--red)}
+.drawer .staff.stud:hover{filter:brightness(1.08)}
+.drawer .foot small.gap{margin-bottom:14px}
 .drawer .foot small{display:block;text-align:center;color:var(--muted);font-size:12px;margin-top:8px}
 </style>
 </head>
@@ -231,7 +236,7 @@ body.menu-open{overflow:hidden}
     <a href="#contact"><span class="i">📍</span>Contact &amp; branches</a>
     <a href="https://tally.so/r/gbDyjM"><span class="i">✍️</span>Enquire for 2027</a>
   </nav>
-  <div class="foot"><a class="staff" href="staff.html">🔒 Staff Login</a><small>Attendance &amp; enquiries · staff only</small></div>
+  <div class="foot"><a class="staff stud" href="https://ptitc-portal.pusattuisyenintelektransformasicakna.workers.dev/login">🎓 Student Login</a><small class="gap">Student portal · practice, notes, tests and Sifu</small><a class="staff" href="staff.html">🔒 Staff Login</a><small>Attendance &amp; enquiries · staff only</small></div>
 </aside>
 
 <header class="site">
@@ -242,6 +247,7 @@ body.menu-open{overflow:hidden}
       <a class="hide" href="#spm">SPM 2026</a>
       <a class="hide" href="#about">About</a>
       <a class="hide" href="#contact">Contact</a>
+      <a class="btn sm hide studb" href="https://ptitc-portal.pusattuisyenintelektransformasicakna.workers.dev/login">Student Login</a>
       <a class="btn red sm" href="https://tally.so/r/gbDyjM">Enquire 2027</a>
     </nav>
   </div>
@@ -411,7 +417,7 @@ body.menu-open{overflow:hidden}
 <footer>
   <div class="wrap">
     <div><b>PTITC</b> · Pusat Tuisyen Intelek Transformasi Cakna · Since 2015<br>© ITC Edu Ventures Sdn. Bhd.</div>
-    <nav aria-label="Footer"><a href="#timetable">Timetable &amp; fees</a><a href="#spm">SPM 2026</a><a href="#contact">Contact</a><a href="staff.html">Staff Login</a></nav>
+    <nav aria-label="Footer"><a href="#timetable">Timetable &amp; fees</a><a href="#spm">SPM 2026</a><a href="#contact">Contact</a><a href="https://ptitc-portal.pusattuisyenintelektransformasicakna.workers.dev/login">Student Login</a><a href="staff.html">Staff Login</a></nav>
   </div>
 </footer>
 
